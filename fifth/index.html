@@ -1,0 +1,37 @@
+<html ng-app='myApp'>
+	<body ng-controller='TextController'>
+		<p>{{someText.message}}</p>
+		<form ng-submit="requestFunding()">
+			Starting: <input ng-change="computeNeeded()"
+			ng-model="funding.startingEstimate">
+			Recommendation: {{funding.needed}}
+			<button>Fund my startup!</button>
+			<button ng-click="reset()" type="button">Reset</button>
+		</form>
+		<script
+			src="../angular.js">
+		</script>
+		<script>
+			var myAppModule = angular.module('myApp', []);
+				myAppModule.controller('TextController',
+				function($scope) {
+					var someText 		= {};
+					someText.message 	= 'You have started your journey.';
+					$scope.someText 	= someText;
+
+					$scope.funding 		= { startingEstimate: 0 };
+					computeNeeded 		= function() {
+						$scope.funding.needed = $scope.funding.startingEstimate * 10;
+					};
+					$scope.requestFunding = function() {
+						window.alert("Sorry, please get more customers first.");
+					};
+					$scope.reset = function() {
+						$scope.funding.startingEstimate = 0;
+					};
+					$scope.$watch('funding.startingEstimate', computeNeeded);
+				}				
+			);			
+		</script>
+	</body>
+</html>
