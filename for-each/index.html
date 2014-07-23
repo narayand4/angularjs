@@ -1,0 +1,24 @@
+<html>
+	<body ng-app="ngforEach">
+		<p ng-controller="ExampleController">
+			{{master | json}}
+		</p>
+	</body>
+</html>	
+<script src="../angular.js"></script>
+<script>
+	angular.module('ngforEach', [])
+	    .controller('ExampleController', ['$scope', function($scope) {
+	     	$scope.master= {};
+
+	      	var values = {name: 'misko', gender: 'male',age: '25 Years',email: 'misko@gmail.com'};
+		    var log = [];
+		    angular.forEach(values, function(value, key) {
+		       this.push(key + ': ' + value);
+		    }, log);
+		    //expect(log).toEqual(['name: misko', 'gender: male']);
+		    //console.log('hello');
+		    $scope.master = log;
+	    }]
+	);	
+</script>
