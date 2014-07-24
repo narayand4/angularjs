@@ -1,0 +1,19 @@
+<script src="../angular.js"></script>
+<script>
+  angular.module('changeExample', [])
+    .controller('ExampleController', ['$scope', function($scope) {
+      $scope.counter = 0;
+      $scope.change = function() {
+        $scope.counter++;
+      };
+    }]);
+</script>
+<body ng-app="changeExample">
+  <div ng-controller="ExampleController">
+    <input type="checkbox" ng-model="confirmed" ng-change="change()" id="ng-change-example1" />
+    <input type="checkbox" ng-model="confirmed" id="ng-change-example2" />
+    <label for="ng-change-example2">Confirmed</label><br />
+    <tt>debug = {{confirmed}}</tt><br/>
+    <tt>counter = {{counter}}</tt><br/>
+  </div>
+</body>

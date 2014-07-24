@@ -1,0 +1,11 @@
+<script src="../angular.js"></script>
+<link href="style.css" rel="stylesheet" type="text/css">
+<body ng-app="">
+<ol ng-init="names=['John', 'Mary', 'Cate', 'Suz']">
+  <li ng-repeat="name in names">
+   <span ng-class-odd="'odd'" ng-class-even="'even'">
+     {{name}} &nbsp; &nbsp; &nbsp;
+   </span>
+  </li>
+</ol>
+</body>
